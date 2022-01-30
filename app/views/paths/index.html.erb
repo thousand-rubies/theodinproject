@@ -1,88 +1,57 @@
 <%= title("All Paths") %>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="max-w-5xl mx-auto ">
-  <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
-    <div class="px-4 py-4 sm:px-6 flex justify-between">
+<div class="max-w-3xl mx-auto ">
+  <div class="bg-white overflow-hidden shadow-2xl rounded-lg">
+    <div class="px-4 pt-8 pb-6 sm:px-8 flex justify-between items-center">
       <div>
         <h3 class="text-1xl mb-3 text-gold-600">PREREQUISITE COURSE</h3>
         <h2 class="text-3xl font-semibold">Foundations</h2>
       </div>
 
       <div>
-        <button type="button" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button type="button" class="text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-odin-green-600 hover:bg-odin-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-odin-green-500">
           Resume
         </button>
       </div>
-      <!-- Content goes here -->
-      <!-- We use less vertical padding on card headers on desktop than on body sections -->
     </div>
-    <div class="px-4 py-5 sm:p-6">
-      <!-- Content goes here -->
+    <div class="px-8 pb-8 sm:px-8">
+      <p class="text-gray-700 leading-normal text-base"><%= @default_path.description %></p>
     </div>
   </div>
-</div>
 
-<div class="paths curriculum-background">
-  <div class="container">
-    <h1 class="text-center page-heading-title mb-16">All Paths</h1>
+
+  <h2 class="text-2xl font-semibold text-center p-10">Choose your learning path:</h2>
+
+  <div class="flex gap-x-6">
     <% @paths.each do |path| %>
-      <% if path.title === 'Foundations' %>
-        <div class='card-main card-main--clickable'>
-          <%= link_to '', path, class: 'card-main__link' %>
-          <div class="card-main__header">
-            <div>
-              <h2 class="foundations-title mb-2"><%= path.title %></h2>
-              <h3 class="text-2xl">Start here!</h3>
-            </div>
-            <% if current_user.nil? %>
-              <%= button_to 'View Path', path_url(path), method: :get, class: 'button button--secondary card-main__button' %>
-            <% elsif current_user.path === path %>
-              <%= button_to 'Resume', path_url(path), method: :get, class: 'button button--primary card-main__button', data: { test_id: "#{path.title.downcase}-resume-path-btn"  } %>
-            <% else %>
-              <%= button_to 'Select', users_paths_path(path_id: path.id), class: 'button button--secondary card-main__button', remote: false, method: :post, data: { disable_with: 'Selecting...' } %>
-            <% end %>
+      <div class="bg-white overflow-hidden shadow-2xl rounded-lg">
+        <div class="px-4 pt-8 pb-6 sm:px-8 flex flex-col justify-between items-center">
+          <div>
+            <%= image_tag PATH_BADGES.fetch(path.title), alt: "#{path.title} badge", class: 'w-24 h-24' %>
           </div>
-          <div class="card-main__description">
-            <% if path.prerequisites.any? %>
-              <p class="card-main__prerequisites">
-                <strong>Prerequisites: <%= prerequisites_list_for(path).html_safe %></strong>
-              </p>
-            <% end %>
-            <p><%= path.description%></p>
+
+          <div class="w-full flex justify-between pt-6">
+            <p class="text-lg text-gold-600">PATH</p>
+            <p class="text-lg text-gray-300"><%= path.lessons.size %> LESSONS</p>
           </div>
         </div>
-      <% end %>
-    <% end %>
+        <div class="px-8 pb-8 sm:px-8">
+          <h2 class="text-2xl font-semibold pb-4"><%= path.title %></h2>
+          <p class="text-gray-700 leading-normal text-base"><%= path.description %></p>
 
-    <hr>
+        </div>
 
-    <div class="paths-grid">
-      <% @paths.each do |path| %>
-        <% if not path.title === 'Foundations' %>
-          <div class='card-main card-main--clickable'>
-            <%= link_to '', path, class: 'card-main__link' %>
-            <div class="card-secondary__header">
-              <h2 class="card-secondary__header-title mb-3xl"><%= path.title %></h2>
-              <% if current_user.nil? %>
-                <%= button_to 'View Path', path_url(path), method: :get, class: 'button button--secondary card-main__button' %>
-              <% elsif current_user.path === path %>
-                <%= button_to 'Resume', path_url(path), method: :get, class: 'button button--primary card-main__button' %>
-              <% else %>
-                <%= button_to 'Select', users_paths_path(path_id: path.id), class: 'button button--secondary card-main__button', remote: false, method: :post, data: { disable_with: 'Selecting...', test_id: "#{path.title.downcase}-select-path-btn" } %>
-              <% end %>
-            </div>
-            <div class="card-main__description">
-              <% if path.prerequisites.any? %>
-                <p class="card-secondary__prerequisites">
-                  <strong>Prerequisites: <%= prerequisites_list_for(path).html_safe %></strong>
-                </p>
-              <% end %>
-              <p>This path is intended to be taken after you have completed the Foundations course. <%= path.description%></p>
-            </div>
+        <div class="px-4 pt-4 pb-8 sm:px-6">
+          <div class="flex justify-center">
+            <button type="button" class="text-center text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-odin-green-600 hover:bg-odin-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-odin-green-500">
+              Select
+            </button>
           </div>
-        <% end %>
-      <% end %>
-    </div>
+          <!-- Content goes here -->
+          <!-- We use less vertical padding on card footers at all sizes than on headers or body sections -->
+        </div>
+      </div>
+    <% end%>
   </div>
 </div>
