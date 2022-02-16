@@ -3,58 +3,55 @@
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="max-w-4xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
-  <h1 class="font-semibold text-3xl pb-10 text-center">All Paths</h1>
+  <h1 class="font-semibold text-3xl pb-10 text-center mx-auto">All Paths</h1>
 
-  <div class="bg-white overflow-hidden shadow-2xl rounded-lg">
-    <div class="px-4 pt-8 pb-6 sm:px-8 flex justify-between items-center flex-col sm:flex-row">
+  <%= render CardComponent.new do |card| %>
+    <% card.header(classes: "flex justify-between items-center flex-col sm:flex-row") do %>
       <div>
         <h3 class="text-1xl mb-3 text-gold-600">PREREQUISITE COURSE</h3>
         <h2 class="text-3xl font-semibold">Foundations</h2>
       </div>
 
-      <div>
-        <button type="button" class="text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-odin-green-600 hover:bg-odin-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-odin-green-500">
-          Resume
-        </button>
+      <div class="pt-4 sm:pt-0">
+        <%= render Paths::ButtonComponent.new(current_user: current_user, path: @default_path)%>
       </div>
-    </div>
-    <div class="px-8 pb-8 sm:px-8">
-      <p class="text-gray-700 leading-normal text-base"><%= @default_path.description %></p>
-    </div>
-  </div>
+    <% end %>
 
+    <% card.body(classes: "pt-0") do %>
+      <p class="text-gray-700 leading-normal text-base"><%= @default_path.description %></p>
+    <% end %>
+  <% end %>
 
   <h2 class="text-2xl font-semibold text-center p-10">Choose your learning path:</h2>
 
   <div class="flex gap-x-6 gap-y-6 flex-col md:flex-row">
     <% @paths.each do |path| %>
-      <div class="bg-white overflow-hidden shadow-2xl rounded-lg">
-        <div class="px-4 sm:p-8 flex flex-col justify-between items-center">
+
+      <%= render CardComponent.new do |card| %>
+        <% card.header(classes: "flex flex-col justify-between items-center") do %>
           <div>
             <%= image_tag PATH_BADGES.fetch(path.title), alt: "#{path.title} badge", class: 'w-28 h-28' %>
           </div>
 
           <div class="w-full flex justify-between pt-6">
             <p class="text-lg text-gold-600">PATH</p>
-            <p class="text-lg text-gray-300"><%= path.lessons.size %> LESSONS</p>
+            <p class="text-lg text-gray-500"><%= path.lessons.size %> LESSONS</p>
           </div>
-        </div>
-        <div class="px-8 pb-8 sm:px-8">
+        <% end %>
+
+        <% card.body do %>
           <h2 class="text-2xl font-semibold pb-4"><%= path.title %></h2>
           <p class="text-gray-700 leading-normal text-base"><%= path.description %></p>
+        <% end %>
 
-        </div>
-
-        <div class="px-4 pt-4 pb-8 sm:px-6">
+        <% card.footer do %>
           <div class="flex justify-center">
             <button type="button" class="text-center text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-odin-green-600 hover:bg-odin-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-odin-green-500">
               Select
             </button>
           </div>
-          <!-- Content goes here -->
-          <!-- We use less vertical padding on card footers at all sizes than on headers or body sections -->
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     <% end%>
   </div>
 </div>
