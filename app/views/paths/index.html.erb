@@ -1,12 +1,10 @@
 <%= title("All Paths") %>
 
-
-<!-- This example requires Tailwind CSS v2.0+ -->
 <div class="max-w-4xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
   <h1 class="font-semibold text-3xl pb-10 text-center mx-auto">All Paths</h1>
 
   <%= render CardComponent.new do |card| %>
-    <% card.header(classes: "flex justify-between items-center flex-col sm:flex-row") do %>
+    <% card.header(classes: "flex justify-between items-center flex-col sm:flex-row space-y-2 sm:space-y-0 ") do %>
       <div>
         <h3 class="text-1xl mb-3 text-gold-600">PREREQUISITE COURSE</h3>
         <h2 class="text-3xl font-semibold">Foundations</h2>
@@ -17,7 +15,7 @@
       </div>
     <% end %>
 
-    <% card.body(classes: "pt-0") do %>
+    <% card.body do %>
       <p class="text-gray-700 leading-normal text-base"><%= @default_path.description %></p>
     <% end %>
   <% end %>
@@ -46,9 +44,8 @@
 
         <% card.footer do %>
           <div class="flex justify-center">
-            <button type="button" class="text-center text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-odin-green-600 hover:bg-odin-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-odin-green-500">
-              Select
-            </button>
+           <%= render Paths::ButtonComponent.new(current_user: current_user, path: @default_path)%>
+
           </div>
         <% end %>
       <% end %>
