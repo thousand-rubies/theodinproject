@@ -1,0 +1,14 @@
+@layer components {
+
+  .page-container {
+    @apply max-w-7xl mx-auto py-10 px-4 sm:py-14 sm:px-6 lg:px-8;
+  }
+
+  .odin-container {
+    @apply max-w-4xl mx-auto py-10 px-4 sm:py-14 sm:px-6 lg:px-8;
+  }
+
+  .tmp-container-spacer {
+    @apply py-10 sm:py-14;
+  }
+}

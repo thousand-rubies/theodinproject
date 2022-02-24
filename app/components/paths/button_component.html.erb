@@ -1,7 +1,7 @@
-<% if current_user.present? %>
-  <button type="button" class="text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-odin-green-600 hover:bg-odin-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-odin-green-500">
+<% if current_user.present? && selected_path? %>
+  <%= button_to path_url(path), method: :get, class: 'text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' do %>
     Resume
-  </button>
+  <% end %>
 <% else %>
   <%= button_to 'Explore', path_url(path), method: :get, class: 'text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500' %>
 <% end %>

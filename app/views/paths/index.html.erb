@@ -1,26 +1,43 @@
 <%= title("All Paths") %>
 
-<div class="max-w-4xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
-  <h1 class="font-semibold text-3xl pb-10 text-center mx-auto">All Paths</h1>
+<div class="bg-gray-100">
+<div class="odin-container">
+  <h1 class="page-heading-title">All Paths</h1>
 
   <%= render CardComponent.new do |card| %>
-    <% card.header(classes: "flex justify-between items-center flex-col sm:flex-row space-y-2 sm:space-y-0 ") do %>
-      <div>
-        <h3 class="text-1xl mb-3 text-gold-600">PREREQUISITE COURSE</h3>
-        <h2 class="text-3xl font-semibold">Foundations</h2>
-      </div>
-
-      <div class="pt-4 sm:pt-0">
-        <%= render Paths::ButtonComponent.new(current_user: current_user, path: @default_path)%>
+    <% card.header(classes: "flex justify-between items-center flex-col md:flex-row space-y-4 md:space-y-0 ") do %>
+      <div class="flex flex-col space-y-5 md:space-x-6 md:space-y-0 md:flex-row items-center">
+        <%= image_tag PATH_BADGES.fetch(@default_path.title), alt: "#{@default_path.title} badge", class: 'w-28 h-28' %>
+        <div class="flex items-center flex-col sm:block">
+          <h3 class="text-1xl mb-1 text-gold-600">PREREQUISITE PATH</h3>
+          <h2 class="text-3xl font-semibold">Foundations</h2>
+        </div>
       </div>
     <% end %>
 
     <% card.body do %>
       <p class="text-gray-700 leading-normal text-base"><%= @default_path.description %></p>
     <% end %>
+
+    <% card.footer do |card| %>
+      <div class="flex space-x-6">
+      <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Button text</button>
+        <%= render Paths::SelectButtonComponent.new(current_user: current_user, path: @default_path)%>
+        <%= button_to path_url(@default_path), method: :get, class: 'text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'  do %>
+          Explore
+        <% end %>
+      </div>
+      <% end %>
   <% end %>
 
-  <h2 class="text-2xl font-semibold text-center p-10">Choose your learning path:</h2>
+  <div class="relative mb-10 mt-10">
+    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+      <div class="w-full border-t border-gray-300"></div>
+    </div>
+    <div class="relative flex justify-center">
+      <span class="px-3 bg-white text-2xl font-semibold text-gray-900"> Then choose a learning path: </span>
+    </div>
+  </div>
 
   <div class="flex gap-x-6 gap-y-6 flex-col md:flex-row">
     <% @paths.each do |path| %>
@@ -43,12 +60,16 @@
         <% end %>
 
         <% card.footer do %>
-          <div class="flex justify-center">
-           <%= render Paths::ButtonComponent.new(current_user: current_user, path: @default_path)%>
-
+          <div class="flex flex-col space-y-4 items-center">
+          <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Button text</button>
+            <%= render Paths::SelectButtonComponent.new(current_user: current_user, path: path)%>
+            <%= button_to path_url(@default_path), method: :get, class: 'text-lg inline-flex items-center px-20 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500', form_class: "w-full"  do %>
+              Explore
+            <% end %>
           </div>
         <% end %>
       <% end %>
     <% end%>
   </div>
+</div>
 </div>
