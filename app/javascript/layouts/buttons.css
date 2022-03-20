@@ -1,13 +1,25 @@
 @layer components {
   /* Prefixed with "top" due to Bootstrap conflicts */
-  .top-btn {
+  /* .top-btn {
     @apply inline-block rounded shadow py-4 px-10 md:px-14 border-0
     text-base font-bold text-center no-underline text-white
     cursor-pointer
     hover:bg-opacity-80
 
+  } */
+
+  .top-btn {
+    @apply inline-flex items-center px-4 py-2
+    border border-transparent rounded-md shadow-sm
+     text-base font-medium text-white
+    focus:outline-none focus:ring-2 focus:ring-offset-2
   }
+
   .top-btn-primary {
-    @apply bg-odin-green
+    @apply bg-odin-green focus:ring-odin-green-500 hover:bg-odin-green-700
+  }
+
+  .top-btn-secondary {
+    @apply bg-gray-700 focus:ring-gray-500 hover:bg-gray-900
   }
 }
