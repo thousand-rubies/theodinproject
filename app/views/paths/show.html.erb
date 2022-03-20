@@ -1,14 +1,23 @@
 <%= title(@path.title) %>
 
+
+<div class="bg-gray-700">
+  <div class="page-container py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <div class="max-w-xl">
+      <h1 class="text-3xl font-extrabold tracking-tight text-white  sm:text-4xl">Full Stack Ruby on Rails</h1>
+      <p class="text-white"><%= @path.description %></p>
+    </div>
+    <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+      <div class="inline-flex rounded-md shadow">
+        <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-odin-green-500 hover:odin-green-700"> Select Path </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="bg-gray-100">
 <div class="container tmp-container-spacer">
-  <h1 class="text-center page-heading-title"><%= @path.title %></h1>
-  <% if user_signed_in? && current_user.path != @path %>
-    <div class="select-container">
-      <%= button_to 'Select Path', users_paths_path(path_id: @path.id), class: 'button button--secondary card-main__button', remote: false, method: :post, data: { disable_with: 'Selecting...', test_id: "#{@path.title.downcase}-select-path-btn" } %>
-    </div>
-  <% end %>
-  <p class="text-center path-description push-down-2x"><%= @path.description %></p>
+  <h2 class="page-heading-title">Courses</h2>
 
   <% @path.courses.each do |course| %>
     <%= render 'courses/course_card', course: course %>

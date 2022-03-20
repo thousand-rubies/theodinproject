@@ -21,10 +21,11 @@
 
     <% card.footer do |card| %>
       <div class="flex space-x-6 sm:items-center">
-        <%= render Paths::SelectButtonComponent.new(current_user: current_user, path: @default_path, classes: "px-16 py-3")%>
+
         <%= button_to path_url(@default_path), method: :get, class: 'top-btn top-btn-secondary px-16 py-3'  do %>
           Explore
         <% end %>
+          <%= render Paths::SelectButtonComponent.new(current_user: current_user, path: @default_path, classes: "px-16 py-3")%>
       </div>
       <% end %>
   <% end %>
@@ -62,10 +63,11 @@
 
         <% card.footer do %>
           <div class="flex space-x-6 items-center">
-            <%= render Paths::SelectButtonComponent.new(current_user: current_user, path: path, classes: 'px-16 md:px-10 py-3 w-full')%>
-            <%= button_to path_url(@default_path), method: :get, class: 'top-btn top-btn-secondary px-16 md:px-10 py-3'  do %>
+
+            <%= button_to path_url(path), method: :get, class: 'top-btn top-btn-secondary px-16 md:px-10 py-3'  do %>
               Explore
             <% end %>
+            <%= render Paths::SelectButtonComponent.new(current_user: current_user, path: path, classes: 'px-16 md:px-10 py-3 w-full')%>
           </div>
         <% end %>
       <% end %>
