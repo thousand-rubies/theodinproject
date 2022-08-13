@@ -7,7 +7,7 @@
     )%>
   </div>
 
-  <%= link_to path_course_url(course.path, course), class: 'no-underline' do %>
-    <h1 class="mt-4 text-center text-4xl font-light mx-auto" data-test-id="course-title-header"><%= course.title %></h1>
+  <%= link_to path_course_url(course.path, course), class: 'hover:no-underline' do %>
+    <h1 class="mt-4 text-center text-4xl font-light mx-auto text-gray-800" data-test-id="course-title-header"><%= course.title %></h1>
   <% end %>
 </div>

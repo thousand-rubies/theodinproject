@@ -7,6 +7,10 @@
   p:not(.lesson-content p) {
     @apply text-gray-600 text-lg tracking-wide;
   }
+
+  a {
+    @apply text-gold-600 no-underline  hover:text-gold-600 hover:underline;
+  }
 }
 
 @layer components {
@@ -24,3 +28,4 @@
     @apply text-gray-500 text-xs absolute -left-5 font-semibold hidden sm:block;
   }
 }
+

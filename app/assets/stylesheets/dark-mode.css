@@ -9,11 +9,11 @@
   --dark-font-light-gray-color: #9CA3AF;
 }
 
-.section-lessons__item__link:hover,
+/* .section-lessons__item__link:hover,
 #student-solutions a:hover a:visited {
   color: var(--dark-font-color) !important;
   text-decoration: underline !important;
-}
+} */
 
 .button--transparent {
   background-color: var(--dark-bg-accent) !important;
@@ -92,7 +92,6 @@ h6,
 p,
 ol,
 li,
-a:hover,
 .accent:hover,
 .far,
 .form__element,

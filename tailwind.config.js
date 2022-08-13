@@ -9,6 +9,17 @@ module.exports = {
         DEFAULT: {
           css: {
             color: '#334155',
+            a: {
+              color: theme('colors.gold.600'),
+              'text-decoration': 'none',
+              '&:hover': {
+                color: theme('colors.gold.500'),
+                'text-decoration': 'underline',
+              },
+              '&:visited': {
+                color: theme('colors.gold.700'),
+              }
+            },
             code: {
               color: theme('colors.pink'),
               backgroundColor: theme('colors.gray.100'),
@@ -26,6 +37,10 @@ module.exports = {
               a: {
                 color: '#0f172a',
                 'text-decoration': 'none',
+                'font-weight': '600',
+                '&:visited': {
+                  color: 'inherit',
+                }
               },
             },
             details: {
@@ -92,6 +107,7 @@ module.exports = {
   variants: {
     extend: {
       fontWeight: ['hover', 'focus'],
+      textColor: ['visited'],
     },
   },
   corePlugins: {

@@ -4,6 +4,7 @@
     @apply inline-flex items-center px-6 justify-center py-3 border border-transparent
     text-base font-medium rounded-md shadow-sm text-white focus:outline-none
     focus:ring-2 focus:ring-offset-2 hover:text-white focus:text-white no-underline
+    hover:no-underline
   }
 
   .button--disabled {
@@ -11,7 +12,7 @@
   }
 
   .button--primary {
-    @apply bg-teal-700 hover:bg-teal-700 focus:ring-teal-600
+    @apply bg-teal-700 hover:bg-teal-800 focus:ring-teal-600
   }
 
   .button--secondary {
