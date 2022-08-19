@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User Accounts', type: :system do
+RSpec.describe 'User Profile', type: :system do
   let!(:user) do
     create(
       :user,
@@ -12,7 +12,7 @@ RSpec.describe 'User Accounts', type: :system do
 
   before do
     sign_in(user)
-    visit edit_user_registration_path
+    visit edit_users_profile_path
   end
 
   describe 'editing profile details' do
