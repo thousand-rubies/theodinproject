@@ -33,7 +33,7 @@ const FlagForm = ({ onSubmit, submission }) => {
           <textarea
             autoFocus
             placeholder="Please be as detailed as possible"
-            className="form-element"
+            className="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-700 focus:border-gray-700"
             rows="5"
             {...register('reason', {
               minLength: { value: 4, message: 'Must be at least 4 characters' },

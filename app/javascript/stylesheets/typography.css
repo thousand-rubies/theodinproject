@@ -4,9 +4,9 @@
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
-  p:not(.lesson-content p) {
+  /* p:not(.lesson-content p) {
     @apply text-gray-600 text-lg tracking-wide;
-  }
+  } */
 }
 
 @layer components {
