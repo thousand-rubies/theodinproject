@@ -31,8 +31,6 @@ Rails.application.routes.draw do
     get '/logout' => 'devise/sessions#destroy', method: :delete
     get 'sign_up' => 'devise/registrations#new'
     get 'signup' => 'devise/registrations#new'
-    # get  "password", to: "devise/registrations#edit", as: :edit_password
-    # get  "/users/password/edit", to: "registrations#edit", as: :edit_password
     get '/confirm_email' => 'users#send_confirmation_link'
   end
 

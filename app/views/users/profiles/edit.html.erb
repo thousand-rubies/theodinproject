@@ -7,7 +7,7 @@
         <%= render Navigation::VerticalComponent.new do |c| %>
           <% c.with_links([
             { name: "Profile", href: edit_users_profile_path, icon_path: 'user-circle.svg' },
-            { name: "Password", href: edit_password_path, icon_path: 'key.svg' },
+            { name: "Password", href: edit_user_registration_path, icon_path: 'key.svg' },
           ]) %>
         <% end %>
       </aside>
@@ -25,23 +25,23 @@
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                   <%= form.label :username %>
-                  <%= form.text_field :username %>
+                  <%= form.text_field :username, data: { test_id: 'username-field' } %>
                 </div>
 
                 <div class="col-span-6 sm:col-span-4">
                   <%= form.label :email %>
-                  <%= form.email_field :email %>
+                  <%= form.email_field :email, data: { test_id: 'email-field' } %>
                 </div>
 
                 <div class="col-span-6 sm:col-span-6">
                   <%= form.label :learning_goal %>
-                  <%= form.text_area :learning_goal, placeholder: "I wanna be the very best...", rows: 4 %>
+                  <%= form.text_area :learning_goal, placeholder: "I wanna be the very best...", rows: 4, data: { test_id: 'learning-goal-field' } %>
                 </div>
               </div>
             <% end %>
 
             <% card.footer(classes: "px-4 py-3 pt-3 bg-gray-50 text-right sm:px-6") do %>
-              <%= form.submit "Save", class: "button button--primary py-2 px-4 text-sm" %>
+              <%= form.submit "Save", class: "button button--primary py-2 px-4 text-sm", data: { test_id: 'save-profile-btn' } %>
             <% end %>
           <% end %>
         <% end %>

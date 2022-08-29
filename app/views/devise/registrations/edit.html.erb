@@ -8,7 +8,7 @@
         <%= render Navigation::VerticalComponent.new do |c| %>
           <% c.with_links([
             { name: "Profile", href: edit_users_profile_path, icon_path: 'user-circle.svg' },
-            { name: "Password", href: edit_password_path, icon_path: 'key.svg' },
+            { name: "Password", href: edit_user_registration_path, icon_path: 'key.svg' },
           ]) %>
         <% end %>
       </aside>

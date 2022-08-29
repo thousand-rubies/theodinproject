@@ -6,7 +6,7 @@ RSpec.describe 'User Profile', type: :system do
       :user,
       username: 'Jeremy Beagle',
       email: 'jezza@beagle.com',
-      learning_goal: 'Javascript'
+      learning_goal: 'Learn JavaScript'
     )
   end
 
@@ -18,36 +18,23 @@ RSpec.describe 'User Profile', type: :system do
   describe 'editing profile details' do
     context 'when updating with a valid name and email address' do
       it 'updates successfully' do
-        expect(find(:test_id, 'settings-view-username').text).to eq 'Jeremy Beagle'
-        expect(find(:test_id, 'settings-view-email')).to have_content 'jezza@beagle.com'
+        expect(find(:test_id, 'username-field').value).to eq('Jeremy Beagle')
+        expect(find(:test_id, 'email-field').value).to eq('jezza@beagle.com')
+        expect(find(:test_id, 'learning-goal-field').value).to eq('Learn JavaScript')
 
-        find(:test_id, 'user-edit-profile-btn').click
+        find(:test_id, 'username-field').fill_in(with: 'Joseph Bloggs')
+        find(:test_id, 'email-field').fill_in(with: 'joey@bloggs.com')
+        find(:test_id, 'learning-goal-field').fill_in(with: 'Learn Ruby')
+        find(:test_id, 'save-profile-btn').click
 
-        find(:test_id, 'edit-username-input').fill_in with: 'Joseph Bloggs'
-        find(:test_id, 'edit-user-email-field').fill_in with: 'joey@bloggs.com'
-        find(:test_id, 'edit-user-submit-btn').click
+        expect(find(:test_id, 'username-field').value).to have_content('Joseph Bloggs')
+        expect(find(:test_id, 'email-field').value).to have_content('joey@bloggs.com')
+        expect(find(:test_id, 'learning-goal-field').value).to have_content('Learn Ruby')
 
-        expect(find(:test_id, 'settings-view-username')).to have_content 'Joseph Bloggs'
-        expect(find(:test_id, 'settings-view-email')).to have_content 'joey@bloggs.com'
-
-        expect(user.reload.username).to eq 'Joseph Bloggs'
-        expect(user.reload.email).to eq 'joey@bloggs.com'
+        expect(user.reload.username).to eq('Joseph Bloggs')
+        expect(user.reload.email).to eq('joey@bloggs.com')
+        expect(user.reload.learning_goal).to eq('Learn Ruby')
       end
-    end
-  end
-
-  describe 'editing the learning goal' do
-    it 'saves the changes' do
-      expect(find(:test_id, 'settings-view-learning-goal')).to have_content 'Javascript'
-
-      find(:test_id, 'user-edit-learning-goal-btn').click
-
-      find(:test_id, 'edit-learning-goal-text-field').fill_in with: 'Ruby'
-      find(:test_id, 'edit-learning-goal-submit-btn').click
-
-      expect(find(:test_id, 'settings-view-learning-goal')).to have_content 'Ruby'
-
-      expect(user.reload.learning_goal).to eq 'Ruby'
     end
   end
 

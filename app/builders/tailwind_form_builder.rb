@@ -40,7 +40,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   def classes_for(attribute, options)
     state = @object.errors[attribute].present? ? :invalid : :valid
 
-    "#{@template.yass(text_field: state)} #{options[:class]}"
+    [@template.yass(text_field: state), options[:class]].compact.join(' ')
   end
 
   def text_layout(attribute)
@@ -66,7 +66,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   def attribute_error_message(attribute)
     return if @object.errors[attribute].blank?
 
-    @template.content_tag :p, class: 'mt-2 text-sm text-red-600' do
+    @template.content_tag :div, class: 'mt-2 text-sm text-red-600' do
       @object.errors[attribute].first
     end
   end

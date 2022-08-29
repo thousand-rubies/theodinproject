@@ -14,7 +14,7 @@ RSpec.describe TailwindFormBuilder do
     it 'returns a tailwind styled text field' do
       expected_html = <<~HTML
         <div class="mt-1 relative rounded-md shadow-sm">
-        <input class="block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 " type="text" name="user[username]" id="user_username" />
+        <input class="block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500" type="text" name="user[username]" id="user_username" />
         </div>
       HTML
 
@@ -48,7 +48,7 @@ RSpec.describe TailwindFormBuilder do
     it 'returns a tailwind styled email field' do
       expected_html = <<~HTML
         <div class="mt-1 relative rounded-md shadow-sm">
-        <input class="block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 " type="email" value="" name="user[email]" id="user_email" />
+        <input class="block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500" type="email" value="" name="user[email]" id="user_email" />
         </div>
       HTML
 
@@ -70,7 +70,7 @@ RSpec.describe TailwindFormBuilder do
     it 'returns a tailwind styled password field' do
       expected_html = <<~HTML
         <div class="mt-1 relative rounded-md shadow-sm">
-        <input class="block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 " type="password" name="user[password]" id="user_password" />
+        <input class="block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500" type="password" name="user[password]" id="user_password" />
         </div>
       HTML
 
@@ -91,7 +91,7 @@ RSpec.describe TailwindFormBuilder do
   describe '#text_area' do
     it 'returns a tailwind styled text area' do
       expected_html = <<~HTML
-        <div class="mt-1 relative rounded-md shadow-sm"><textarea class="mt-1 block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 " name="user[username]" id="user_username">
+        <div class="mt-1 relative rounded-md shadow-sm"><textarea class="mt-1 block w-full border rounded-md py-2 px-3 focus:outline-none sm:text-base border-gray-300 focus:ring-indigo-500 focus:border-indigo-500" name="user[username]" id="user_username">
         </textarea></div>
       HTML
 

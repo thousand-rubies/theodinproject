@@ -115,7 +115,7 @@ function findErrorDiv(input) {
 
 function createErrorDiv(input, inputParent) {
   const divName = document.createElement('div');
-  divName.classList.add('form__error-message', 'push-down', input.id);
+  divName.classList.add('mt-2', 'text-sm', 'text-red-600', input.id);
   inputParent.parentNode.insertBefore(divName, inputParent.nextSibling);
   return divName;
 }

@@ -1,10 +1,11 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { func, object } from 'prop-types';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import schema from '../schemas/project-submission-schema';
-import Toggle from './toggle';
+import Toggle from './form/toggle';
+import UrlField from './form/url-field';
 
 const EditForm = ({
   submission, onSubmit, onClose, onDelete,
@@ -23,9 +24,7 @@ const EditForm = ({
     },
   });
 
-  const {
-    errors,
-  } = formState;
+  const { errors } = formState;
 
   const handleOnClickToggle = () => {
     setIsToggled(!isToggled);
@@ -56,7 +55,6 @@ const EditForm = ({
     );
   }
 
-  /* eslint-disable react/jsx-props-no-spreading */
   return (
     <div data-test-id="edit-form">
       <h1 className="text-center page-heading-title">Edit Your Project</h1>
@@ -65,66 +63,31 @@ const EditForm = ({
         <input type="hidden" {...register('id')} value={submission.id} />
         <input type="hidden" {...register('lesson_id')} value={submission.lesson_id} />
 
-        <div class="flex flex-col space-y-4">
-          <div>
-            <label htmlFor="repo_url" className="block text-sm font-medium text-gray-700 text-left">Github repository url</label>
-            <div className="mt-1 relative rounded-md shadow-sm">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-gray-700 fab fa-github" />
-              </div>
-              <input
-                type="url"
-                autoFocus
-                id="repo_url"
-                className="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 border-gray-300 rounded-md"
-                placeholder="https://github.com"
-                data-test-id="repo-url-field"
-                {...register('repo_url')}
-              />
-            </div>
-            {errors.repo_url && (
-            <div className="mt-2 text-sm text-red-600" data-test-id="error-message">
-              {' '}
-              {errors.repo_url.message}
-            </div>
-            )}
-          </div>
+        <div className="flex flex-col space-y-4">
+          <UrlField
+            name="repo_url"
+            label="Github repository url"
+            icon="fab fa-github"
+            placeholder="https://github.com"
+            register={register}
+            errors={errors}
+            autoFocus
+          />
 
-          { submission.lesson_has_live_preview
-            && (
-            <Fragment>
-              <div className="">
-                <label htmlFor="live_preview_url" className="block text-sm font-medium text-gray-700 text-left">Live preview url</label>
-                <div className="mt-1 relative rounded-md shadow-sm ">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span className="text-gray-700 fas fa-link" />
-                  </div>
-                  <input
-                    type="url"
-                    id="live_preview_url"
-                    className="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 border-gray-300 rounded-md"
-                    placeholder="https://www.example.com"
-                    data-test-id="live-preview-url-field"
-                    {...register('live_preview_url')}
-                  />
-                </div>
-                { errors.live_preview_url && (
-                <div className="mt-2 text-sm text-red-600" data-test-id="error-message">
-                  {' '}
-                  {errors.live_preview_url.message}
-                </div>
-                ) }
-              </div>
-            </Fragment>
+          { submission.lesson_has_live_preview && (
+            <UrlField
+              name="live_preview_url"
+              label="Live preview url"
+              icon="fas fa-link"
+              placeholder="https://www.example.com"
+              register={register}
+              errors={errors}
+            />
           )}
         </div>
 
         <div className="form-section form-section-center mb-0">
-          <Toggle
-            label="MAKE SOLUTION PUBLIC"
-            onClick={handleOnClickToggle}
-            isToggled={isToggled}
-          />
+          <Toggle label="MAKE SOLUTION PUBLIC" onClick={handleOnClickToggle} isToggled={isToggled} />
 
           <div className="flex flex-col items-center sm:flex-row sm:justify-center">
             <button
@@ -148,7 +111,6 @@ const EditForm = ({
       </form>
     </div>
   );
-  /* eslint-enable react/jsx-props-no-spreading */
 };
 
 EditForm.propTypes = {
