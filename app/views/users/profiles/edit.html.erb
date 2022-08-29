@@ -13,7 +13,8 @@
       </aside>
 
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
-        <%= form_with model: current_user, url: users_profile_path do |form| %>
+
+        <%= form_with model: current_user, url: users_profile_path, builder: TailwindFormBuilder do |form| %>
           <%= render CardComponent.new(classes: "odin-dark-bg-accent") do |card| %>
             <% card.header do %>
               <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
@@ -23,35 +24,18 @@
             <% card.body do %>
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
-
-
-                  <div>
-                    <%= form.label :username, class: "block text-sm font-medium text-gray-700" %>
-                    <div class="mt-1 relative rounded-md shadow-sm">
-                      <%= form.text_field :username, class: "block w-full border rounded-md border-gray-300 py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base #{'pr-10 border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500' if current_user.errors[:username].present? }" %>
-
-                      <% if current_user.errors[:username].present? %>
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                          <%= inline_svg_tag 'icons/exclaimation-circle.svg', class: 'h-5 w-5 text-red-500', aria: true, title: 'Error', desc: 'Error icon' %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <% if current_user.errors[:username].present? %>
-                      <p class="mt-2 text-sm text-red-600" id="email-error"><%= current_user.errors[:username].first %></p>
-                    <% end %>
-                  </div>
+                  <%= form.label :username %>
+                  <%= form.text_field :username %>
                 </div>
 
-
-
                 <div class="col-span-6 sm:col-span-4">
-                  <%= form.label :email, class: "block text-sm font-medium text-gray-700" %>
-                  <%= form.email_field :email, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base" %>
+                  <%= form.label :email %>
+                  <%= form.email_field :email %>
                 </div>
 
                 <div class="col-span-6 sm:col-span-6">
-                  <%= form.label :learning_goal, class: "block text-sm font-medium text-gray-700" %>
-                  <%= form.text_area :learning_goal, placeholder: "I wanna be the very best...", rows: 4, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base" %>
+                  <%= form.label :learning_goal %>
+                  <%= form.text_area :learning_goal, placeholder: "I wanna be the very best...", rows: 4 %>
                 </div>
               </div>
             <% end %>

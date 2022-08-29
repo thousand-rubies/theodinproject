@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get '/logout' => 'devise/sessions#destroy', method: :delete
     get 'sign_up' => 'devise/registrations#new'
     get 'signup' => 'devise/registrations#new'
-    get  "password", to: "devise/registrations#edit", as: :edit_password
+    # get  "password", to: "devise/registrations#edit", as: :edit_password
     # get  "/users/password/edit", to: "registrations#edit", as: :edit_password
     get '/confirm_email' => 'users#send_confirmation_link'
   end
@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :paths, only: :create
     resources :progress, only: :destroy
-    resource :profile, only: [:edit, :update]
+    resource :profile, only: %i[edit update]
   end
 
   namespace :lessons do

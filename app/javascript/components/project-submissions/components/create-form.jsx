@@ -67,13 +67,13 @@ const CreateForm = ({ onClose, onSubmit }) => {
                 autoFocus
                 id="repo_url"
                 className="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 border-gray-300 rounded-md"
-                placeholder="https://github.com/..."
+                placeholder="https://github.com"
                 data-test-id="repo-url-field"
                 {...register('repo_url')}
               />
             </div>
             {errors.repo_url && (
-            <div className="form-error" data-test-id="error-message">
+            <div className="mt-2 text-sm text-red-600" data-test-id="error-message">
               {' '}
               {errors.repo_url.message}
             </div>
@@ -93,13 +93,13 @@ const CreateForm = ({ onClose, onSubmit }) => {
                     type="url"
                     id="live_preview_url"
                     className="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 border-gray-300 rounded-md"
-                    placeholder="https://livepreview.com"
+                    placeholder="https://www.example.com"
                     data-test-id="live-preview-url-field"
                     {...register('live_preview_url')}
                   />
                 </div>
                 { errors.live_preview_url && (
-                <div className="form-error" data-test-id="error-message">
+                <div className="mt-2 text-sm text-red-600" data-test-id="error-message">
                   {' '}
                   {errors.live_preview_url.message}
                 </div>

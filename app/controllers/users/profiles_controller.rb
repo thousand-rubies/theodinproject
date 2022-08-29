@@ -2,8 +2,7 @@ module Users
   class ProfilesController < ApplicationController
     before_action :authenticate_user!
 
-    def edit
-    end
+    def edit; end
 
     def update
       if current_user.update(user_params)
