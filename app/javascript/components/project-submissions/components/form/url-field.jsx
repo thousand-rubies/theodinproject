@@ -14,13 +14,13 @@ const UrlField = ({ name, label, icon, register, errors, autoFocus, placeholder 
       <label htmlFor={name} className="block text-sm font-medium text-gray-700 text-left">{ label }</label>
       <div className="mt-1 relative rounded-md shadow-sm">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <span className={`text-gray-700 ${icon}`} />
+          <span className={`text-gray-700 odin-dark-icon ${icon}`} />
         </div>
         <input
           type="url"
           autoFocus={autoFocus}
           id={name}
-          className={`block w-full pl-10 rounded-md ${styles()}`}
+          className={`block w-full pl-10 rounded-md dark-form-input ${styles()}`}
           placeholder={placeholder}
           data-test-id={`${kebabCase(name)}-field`}
           {...register(name)}

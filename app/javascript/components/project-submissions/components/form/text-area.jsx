@@ -14,7 +14,7 @@ const TextArea = ({ name, register, errors, rows, autoFocus, placeholder, dataTe
       <textarea
         autoFocus={autoFocus}
         placeholder={placeholder}
-        className={`block w-full border rounded-md shadow-sm py-2 px-3 focus:outline-none ${styles()}`}
+        className={`block w-full border rounded-md shadow-sm py-2 px-3 focus:outline-none dark-form-input ${styles()}`}
         rows={rows}
         data-test-id={dataTestId}
         {...register(name, {

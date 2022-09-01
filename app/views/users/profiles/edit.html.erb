@@ -1,13 +1,13 @@
 <%= title('Settings') %>
 
-<div class="bg-gray-100">
+<div class="bg-gray-100 odin-dark-bg">
   <div class="page-container">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
       <aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3">
         <%= render Navigation::VerticalComponent.new do |c| %>
           <% c.with_links([
-            { name: "Profile", href: edit_users_profile_path, icon_path: 'user-circle.svg' },
-            { name: "Password", href: edit_user_registration_path, icon_path: 'key.svg' },
+            { name: 'Profile', href: edit_users_profile_path, icon_path: 'user-circle.svg' },
+            { name: 'Password', href: edit_user_registration_path, icon_path: 'key.svg' },
           ]) %>
         <% end %>
       </aside>
@@ -15,32 +15,41 @@
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
 
         <%= form_with model: current_user, url: users_profile_path, builder: TailwindFormBuilder do |form| %>
-          <%= render CardComponent.new(classes: "odin-dark-bg-accent") do |card| %>
+          <%= render CardComponent.new(classes: 'odin-dark-bg-accent') do |card| %>
             <% card.header do %>
-              <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
                 <p class="mt-1 text-sm text-gray-500">Profile information will be displayed on your dashboard.</p>
             <% end %>
 
             <% card.body do %>
               <div class="grid grid-cols-6 gap-6">
+
+                <div class="col-span-6">
+                  <%= form.label :avatar %>
+                  <div class="flex items-center">
+                    <%= render User::AvatarComponent.new(current_user: current_user, classes: "w-14") %>
+                     <p class="text-gray-600 text-sm ml-3">Sign in with Github or Google to change your avatar</p>
+                  </div>
+                </div>
+
                 <div class="col-span-6 sm:col-span-3">
                   <%= form.label :username %>
-                  <%= form.text_field :username, data: { test_id: 'username-field' } %>
+                  <%= form.text_field :username, class: 'form__element dark-form-input', data: { test_id: 'username-field' } %>
                 </div>
 
                 <div class="col-span-6 sm:col-span-4">
                   <%= form.label :email %>
-                  <%= form.email_field :email, data: { test_id: 'email-field' } %>
+                  <%= form.email_field :email, class: 'form__element dark-form-input', data: { test_id: 'email-field' } %>
                 </div>
 
                 <div class="col-span-6 sm:col-span-6">
                   <%= form.label :learning_goal %>
-                  <%= form.text_area :learning_goal, placeholder: "I wanna be the very best...", rows: 4, data: { test_id: 'learning-goal-field' } %>
+                  <%= form.text_area :learning_goal, class: 'form__element dark-form-input', placeholder: 'I wanna be the very best...', rows: 4, data: { test_id: 'learning-goal-field' } %>
                 </div>
               </div>
             <% end %>
 
-            <% card.footer(classes: "px-4 py-3 pt-3 bg-gray-50 text-right sm:px-6") do %>
+            <% card.footer(classes: "px-4 py-3 pt-3 bg-gray-50 text-right sm:px-6 odin-dark-bg-accent") do %>
               <%= form.submit "Save", class: "button button--primary py-2 px-4 text-sm", data: { test_id: 'save-profile-btn' } %>
             <% end %>
           <% end %>
@@ -54,13 +63,13 @@
 
           <% card.body do %>
             <div class="inline-flex flex-col space-y-5">
-              <%= link_to users_progress_path(current_user), class: 'button button--clear px-3 py-2 text-sm', data: { confirm: 'Are you sure?', test_id: 'user-reset-progress-link' }, method: :delete do %>
-                <%= inline_svg_tag "icons/refresh.svg", class: "-ml-0.5 mr-2 h-4 w-4 text-red-600", aria: true, title: "Refresh icon" %>
+              <%= link_to users_progress_path(current_user), class: 'button button--clear px-3 py-2 text-sm odin-dark-clear-button', data: { confirm: 'Are you sure?', test_id: 'user-reset-progress-link' }, method: :delete do %>
+                <%= inline_svg_tag "icons/refresh.svg", class: "-ml-0.5 mr-2 h-4 w-4 text-red-700", aria: true, title: "Refresh icon" %>
                 Reset progress
               <% end %>
 
-              <%= link_to registration_path(current_user), class: 'button button--clear px-3 py-2 text-sm', data: { confirm: 'Are you sure?', test_id: 'user-account-delete-link' }, method: :delete do %>
-                <%= inline_svg_tag "icons/trash.svg", class: "-ml-0.5 mr-2 h-4 w-4 text-red-600", aria: true, title: "Trash can icon" %>
+              <%= link_to registration_path(current_user), class: 'button button--clear px-3 py-2 text-sm odin-dark-clear-button', data: { confirm: 'Are you sure?', test_id: 'user-account-delete-link' }, method: :delete do %>
+                <%= inline_svg_tag "icons/trash.svg", class: "-ml-0.5 mr-2 h-4 w-4 text-red-700", aria: true, title: "Trash can icon" %>
                 Delete account
               <% end %>
             </div>

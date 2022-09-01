@@ -6,13 +6,13 @@ class Navigation::LinkComponent < ViewComponent::Base
   end
 
   def current_icon_classes
-    return 'text-gray-600 group-hover:text-gray-700' if current?
+    return 'text-gray-600 group-hover:text-gray-700 odin-dark-page-nav-item-active' if current?
 
     'text-gray-400 group-hover:text-gray-500'
   end
 
   def current_link_classes
-    return 'bg-gray-50 text-gray-700 hover:text-gray-700 hover:bg-white' if current?
+    return 'bg-gray-50 text-gray-700 hover:text-gray-700 hover:bg-white odin-dark-page-nav-item-active' if current?
 
     'text-gray-900 hover:text-gray-900 hover:bg-gray-50'
   end
