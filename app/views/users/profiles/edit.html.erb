@@ -17,20 +17,12 @@
         <%= form_with model: current_user, url: users_profile_path, builder: TailwindFormBuilder do |form| %>
           <%= render CardComponent.new(classes: 'odin-dark-bg-accent') do |card| %>
             <% card.header do %>
-                <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
-                <p class="mt-1 text-sm text-gray-500">Profile information will be displayed on your dashboard.</p>
+                <h3 class="text-xl leading-6 font-medium text-gray-900">Profile</h3>
+                <span class="block mt-1 text-gray-500">Profile information will be displayed on your dashboard.</span>
             <% end %>
 
             <% card.body do %>
               <div class="grid grid-cols-6 gap-6">
-
-                <div class="col-span-6">
-                  <%= form.label :avatar %>
-                  <div class="flex items-center">
-                    <%= render User::AvatarComponent.new(current_user: current_user, classes: "w-14") %>
-                     <p class="text-gray-600 text-sm ml-3">Sign in with Github or Google to change your avatar</p>
-                  </div>
-                </div>
 
                 <div class="col-span-6 sm:col-span-3">
                   <%= form.label :username %>
@@ -46,19 +38,27 @@
                   <%= form.label :learning_goal %>
                   <%= form.text_area :learning_goal, class: 'form__element dark-form-input', placeholder: 'I wanna be the very best...', rows: 4, data: { test_id: 'learning-goal-field' } %>
                 </div>
+
+                <div class="col-span-6">
+                  <%= form.label :avatar %>
+                  <div class="flex items-center">
+                    <%= render User::AvatarComponent.new(current_user: current_user, classes: "w-16") %>
+                  </div>
+                   <span class="block text-gray-500 text-sm mt-2">Sign in with Github or Google to change your avatar</span>
+                </div>
               </div>
             <% end %>
 
             <% card.footer(classes: "px-4 py-3 pt-3 bg-gray-50 text-right sm:px-6 odin-dark-bg-accent") do %>
-              <%= form.submit "Save", class: "button button--primary py-2 px-4 text-sm", data: { test_id: 'save-profile-btn' } %>
+              <%= form.submit "Save", class: "button button--primary py-2 px-4", data: { test_id: 'save-profile-btn' } %>
             <% end %>
           <% end %>
         <% end %>
 
         <%= render CardComponent.new(classes: "odin-dark-bg-accent") do |card| %>
           <% card.header do %>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Danger Zone</h3>
-             <p class="mt-1 text-sm text-gray-500">Careful, these actions can not be undone.</p>
+            <h3 class="text-xl leading-6 font-medium text-gray-900">Danger Zone</h3>
+             <span class="block mt-1 text-gray-500">Careful, these actions can not be undone.</span>
           <% end %>
 
           <% card.body do %>
