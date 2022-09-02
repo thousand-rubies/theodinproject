@@ -7,14 +7,14 @@
 
       <div class="card-main odin-dark-bg-accent">
 
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), builder: TailwindFormBuilder, html: { method: :post }) do |form| %>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), builder: TailwindFormBuilder, html: { method: :post, class: 'form' }) do |form| %>
           <div class="mb-6">
             <%= form.label :email %>
              <%= form.email_field :email, autofocus: true, required: true, placeholder: 'you@example.com', class: 'form__element dark-form-input' %>
              <p class="mt-2 text-sm text-gray-500">Where should we send the password reset instructions to?</p>
           </div>
 
-          <%= form.submit "Send reset instructions", class: "button button--primary full-width push-down" %>
+          <%= form.submit 'Send reset instructions', class: 'button button--primary full-width push-down' %>
         <% end %>
       </div>
     </div>

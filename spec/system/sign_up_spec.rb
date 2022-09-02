@@ -28,7 +28,7 @@ RSpec.describe 'Sign Up', type: :system do
       find(:test_id, 'password_confirmation_field').fill_in(with: 'partyparrot18')
       find(:test_id, 'submit_btn').click
 
-      expect(page).to have_content('is too short (minimum is 4 characters)')
+      expect(page).to have_content('is too short (minimum is 2 characters)')
       expect(page).to have_content('is not a valid email')
       expect(page).to have_content('The passwords do not match')
       expect(page).to have_current_path(sign_up_path)

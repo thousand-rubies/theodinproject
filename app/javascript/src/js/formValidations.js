@@ -5,7 +5,7 @@ import validate from 'validate.js';
 const constraints = {
   'user[username]': {
     length: {
-      minimum: 4,
+      minimum: 2,
       maximum: 20,
     },
   },
