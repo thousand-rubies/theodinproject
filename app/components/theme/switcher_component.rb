@@ -1,8 +1,9 @@
 class Theme::SwitcherComponent < ViewComponent::Base
-  def initialize(theme:, mobile: false, icon_only: false)
+  include Classy::Yaml::ComponentHelpers
+
+  def initialize(theme:, type: :default)
     @theme = theme
-    @mobile = mobile
-    @icon_only = icon_only
+    @type = type
   end
 
   def dark_mode?
@@ -14,12 +15,22 @@ class Theme::SwitcherComponent < ViewComponent::Base
   end
 
   def text
-    dark_mode? ? 'Light Mode' : 'Dark Mode'
+    dark_mode? ? 'Light mode' : 'Dark mode'
   end
 
   def other_theme
     dark_mode? ? 'light' : 'dark'
   end
 
-  attr_reader :theme, :mobile, :icon_only
+  def icon_only?
+    type == :icon_only
+  end
+
+  def mobile?
+    type == :mobile
+  end
+
+  private
+
+  attr_reader :theme, :type
 end

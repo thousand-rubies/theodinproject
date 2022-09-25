@@ -27,8 +27,8 @@
     <%= stylesheet_link_tag 'application_stylesheet', media: 'all'  %>
     <%= stylesheet_pack_tag 'application' %>
 
-    <% if cookies[:theme] == "dark" %>
-      <%= stylesheet_link_tag 'dark-mode', media: 'all' %>
+    <%= turbo_frame_tag "dark_mode_style_styles" do %>
+      <%= render 'layouts/dark_mode_styles', theme: cookies[:theme] %>
     <% end %>
 
     <%= javascript_pack_tag 'application', defer: true %>
