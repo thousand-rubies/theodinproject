@@ -26,7 +26,7 @@
     <% end %>
 
     <%= turbo_frame_tag "theme_switcher" do %>
-      <%= render Theme::SwitcherComponent.new(theme: theme) %>
+      <%= render Theme::SwitcherComponent.new(current_theme: current_theme) %>
     <% end %>
 
     <%= link_to logout_path, class: "odin-dark-nav-item text-gray-700 group flex items-center px-3 py-2 text-sm" do %>

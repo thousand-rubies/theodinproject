@@ -2,10 +2,10 @@ class ThemesController < ApplicationController
   ALLOWED_THEMES = %w[light dark].freeze
 
   def update
-    @theme = params[:theme]
+    theme = params[:theme]
 
-    if ALLOWED_THEMES.include?(@theme)
-      cookies.permanent[:theme] = @theme
+    if ALLOWED_THEMES.include?(theme)
+      set_current_theme(theme)
 
       respond_to do |format|
         format.html { redirect_back(fallback_location: root_path) }
