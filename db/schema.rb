@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_17_151628) do
+ActiveRecord::Schema.define(version: 2022_10_14_130631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2022_09_17_151628) do
     t.bigint "user_id"
     t.string "learn_more_url"
     t.index ["user_id"], name: "index_announcements_on_user_id"
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.text "body"
+    t.bigint "lesson_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_contents_on_lesson_id"
   end
 
   create_table "courses", id: :serial, force: :cascade do |t|
@@ -104,7 +112,6 @@ ActiveRecord::Schema.define(version: 2022_09_17_151628) do
     t.integer "section_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
     t.string "slug"
     t.boolean "accepts_submission", default: false, null: false
     t.boolean "has_live_preview", default: false, null: false
@@ -255,6 +262,7 @@ ActiveRecord::Schema.define(version: 2022_09_17_151628) do
   end
 
   add_foreign_key "announcements", "users"
+  add_foreign_key "contents", "lessons"
   add_foreign_key "flags", "project_submissions"
   add_foreign_key "flags", "users", column: "flagger_id"
   add_foreign_key "lesson_completions", "lessons", on_delete: :cascade

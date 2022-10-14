@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   def show
     @lesson = decorated_lesson
+    @content = lesson.content
 
     if user_signed_in?
       @project_submissions = public_project_submissions
@@ -33,4 +34,8 @@ class LessonsController < ApplicationController
   def lesson
     Lesson.find(params[:id])
   end
+
+  # def lesson_with_content
+  #   Lesson.includes(:content).find(params[:id])
+  # end
 end
