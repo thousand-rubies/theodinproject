@@ -51,7 +51,7 @@ group :development do
   gem 'rubocop-performance', '~> 1.15', require: false
   gem 'rubocop-rails', '~> 2.16', require: false
   gem 'rubocop-rspec', '~> 2.13', require: false
-  gem 'web-console', '~> 4.2'
+  gem 'web-console', '~> 4.2', '>= 4.2.1'
 end
 
 group :development, :test do
