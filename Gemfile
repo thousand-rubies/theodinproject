@@ -2,10 +2,10 @@ ruby File.read('.ruby-version').strip
 
 source 'https://rubygems.org'
 
-gem 'rails', '6.1.6.1'
+gem 'rails', '7.1.0'
 
 gem 'activeadmin', '~> 2.13'
-gem 'activeadmin_addons', '~> 1.9'
+gem 'activeadmin_addons', '~> 1.10', '>= 1.10.0'
 gem 'active_material', '~> 1.5'
 gem 'acts_as_votable', '~> 0.13'
 gem 'barnes', '~> 0.0'
@@ -22,7 +22,7 @@ gem 'github_webhook', '~> 1.4'
 gem 'inline_svg', '~> 1.8'
 gem 'kramdown', '~> 2.4'
 gem 'newrelic_rpm', '~> 8.11'
-gem 'noticed', '~> 1.6'
+gem 'noticed', '~> 1.6', '>= 1.6.1'
 gem 'octokit', '~> 5.6'
 gem 'omniauth-github', '~> 2.0'
 gem 'omniauth-google-oauth2', '~> 1.0'
