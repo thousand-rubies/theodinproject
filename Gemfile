@@ -47,10 +47,10 @@ group :development do
   gem 'letter_opener', '~> 1.8'
   gem 'listen', '~> 3.7'
   gem 'rack-mini-profiler'
-  gem 'rubocop', '~> 1.36', require: false
-  gem 'rubocop-performance', '~> 1.15', require: false
-  gem 'rubocop-rails', '~> 2.16', require: false
-  gem 'rubocop-rspec', '~> 2.13', require: false
+  gem 'rubocop', '~> 1.37', '>= 1.37.0', require: false
+  gem 'rubocop-performance', '~> 1.15', '>= 1.15.1', require: false
+  gem 'rubocop-rails', '~> 2.17', '>= 2.17.0', require: false
+  gem 'rubocop-rspec', '~> 2.14', '>= 2.14.0', require: false
   gem 'web-console', '~> 4.2'
 end
 
@@ -63,13 +63,13 @@ group :test do
   gem 'capybara', '~> 3.37'
   gem 'climate_control', '~> 1.2'
   gem 'cuprite', '~> 0.14'
-  gem 'erb_lint', '~> 0.2', require: false
+  gem 'erb_lint', '~> 0.3', '>= 0.3.0', require: false
   gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-retry', '~> 0.6'
   gem 'shoulda-matchers', '~> 5.2'
   gem 'simplecov', '~> 0.21', require: false
   gem 'vcr', '~> 6.1'
-  gem 'webmock', '~> 3.18'
+  gem 'webmock', '~> 3.19', '>= 3.19.0'
 end
 
 # TODO: These gems are no longer default in Ruby 3.1 and have to be declared explicity, or Rspec will break.
