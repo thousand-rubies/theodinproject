@@ -2,7 +2,7 @@ ruby File.read('.ruby-version').strip
 
 source 'https://rubygems.org'
 
-gem 'rails', '6.1.6.1'
+gem 'rails', '7.0.0'
 
 gem 'activeadmin', '~> 2.13'
 gem 'activeadmin_addons', '~> 1.9'
@@ -50,7 +50,7 @@ group :development do
   gem 'rubocop', '~> 1.36', require: false
   gem 'rubocop-performance', '~> 1.15', require: false
   gem 'rubocop-rails', '~> 2.16', require: false
-  gem 'rubocop-rspec', '~> 2.13', require: false
+  gem 'rubocop-rspec', '~> 3.5', '>= 3.5.0', require: false
   gem 'web-console', '~> 4.2'
 end
 
