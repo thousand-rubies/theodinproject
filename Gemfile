@@ -2,7 +2,7 @@ ruby File.read('.ruby-version').strip
 
 source 'https://rubygems.org'
 
-gem 'rails', '6.1.6.1'
+gem 'rails', '7.0.0'
 
 gem 'activeadmin', '~> 2.13'
 gem 'activeadmin_addons', '~> 1.9'
@@ -39,8 +39,8 @@ gem 'sentry-rails', '~> 5.4'
 gem 'sentry-ruby', '~> 5.5'
 gem 'sentry-sidekiq', '~> 5.4'
 gem 'shakapacker', '6.5.2'
-gem 'sidekiq', '~> 6.5'
-gem 'turbo-rails', '~> 1.3'
+gem 'sidekiq', '~> 8.0', '>= 8.0.0'
+gem 'turbo-rails', '~> 2.0', '>= 2.0.13'
 gem 'view_component', '~> 2.74'
 
 group :development do
