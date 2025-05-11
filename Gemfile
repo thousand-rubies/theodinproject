@@ -2,7 +2,7 @@ ruby File.read('.ruby-version').strip
 
 source 'https://rubygems.org'
 
-gem 'rails', '6.1.6.1'
+gem 'rails', '7.0.0'
 
 gem 'activeadmin', '~> 2.13'
 gem 'activeadmin_addons', '~> 1.9'
@@ -39,7 +39,7 @@ gem 'sentry-rails', '~> 5.4'
 gem 'sentry-ruby', '~> 5.5'
 gem 'sentry-sidekiq', '~> 5.4'
 gem 'shakapacker', '6.5.2'
-gem 'sidekiq', '~> 6.5'
+gem 'sidekiq', '~> 8.0', '>= 8.0.0'
 gem 'turbo-rails', '~> 1.3'
 gem 'view_component', '~> 2.74'
 
@@ -75,7 +75,7 @@ end
 # TODO: These gems are no longer default in Ruby 3.1 and have to be declared explicity, or Rspec will break.
 # They can be removed once upgraded to Rails 7.0.1 + as they are properly declared as a dependency in that version
 # See https://stackoverflow.com/questions/70500220/rails-7-ruby-3-1-loaderror-cannot-load-such-file-net-smtp
-gem 'net-imap'
+gem 'net-imap', '>= 0.3.9'
 gem 'net-pop'
 gem 'net-smtp'
 
